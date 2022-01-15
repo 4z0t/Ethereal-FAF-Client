@@ -3,13 +3,12 @@
                     xmlns:models="clr-namespace:beta.Models.Server"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     mc:Ignorable="d"
-                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-                    xmlns:ui="http://schemas.modernwpf.com/2019"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:converters="clr-namespace:beta.Infrastructure.Converters">
     <Style x:Key="LobbyTextBlockStyle" TargetType="TextBlock">
         <Setter Property="Padding" Value="24 0 0 0"/>
         <Setter Property="FontSize" Value="13"/>
-        <Setter Property="Foreground" Value="{DynamicResource SystemControlBackgroundBaseMediumHighBrush}"/>
+        <!--<Setter Property="Foreground" Value="{DynamicResource SystemControlBackgroundBaseMediumHighBrush}"/>-->
         <Setter Property="Margin" Value="0 6 0 0"/>
     </Style>
     <Style x:Key="NewLobbyBorderStyle" TargetType="Border">
@@ -75,7 +74,7 @@
                 Name="Border"
                 VerticalAlignment="Bottom"
                 Padding="5"
-                Background="{DynamicResource NavigationViewDefaultPaneBackground}"
+                Background="Gray"
                 CornerRadius="10"
                 ToolTip="{Binding  launched_at}">
                 <Border.Resources>
@@ -157,18 +156,18 @@
                             </Style>
                         </Viewbox.Resources>
                     </Viewbox>-->
-                    <ui:ListViewHeaderItem Content="{Binding title}"
+                    <Button Content="{Binding title}"
                                            Margin="-3 0 -3 4"
                                            FontSize="14"
-                                           Foreground="{DynamicResource SystemControlBackgroundBaseMediumHighBrush}"
+                                           Foreground="Gray"
                                            ToolTip="Title"
                                            FontWeight="SemiBold"/>
                     <StackPanel Orientation="Horizontal">
                         <Grid Width="90"
                               Height="90"
                               Margin="10 0 0 10">
-                            <Border Background="{DynamicResource NavigationViewDefaultPaneBackground}"
-                                    BorderBrush="{DynamicResource NavigationViewDefaultPaneBackground}"
+                            <Border Background="Gray"
+                                    BorderBrush="Black"
                                     BorderThickness="1"
                                     CornerRadius="10"
                                     ClipToBounds="True"
@@ -196,8 +195,7 @@
                                             </DataTrigger>
                                             <DataTrigger Binding="{Binding PreviewType, Mode=OneTime}"
                                                          Value="Normal">
-                                                <Setter Property="Source" Value="{Binding mapname,
-                                                    Converter={StaticResource UriToCachedImageConverter}}"/>
+                                                <Setter Property="Source" Value="{Binding mapname, Converter={StaticResource UriToCachedImageConverter}}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
@@ -206,7 +204,7 @@
                                     <VisualBrush Visual="{Binding ElementName=Borderg}"/>
                                 </Image.OpacityMask>
                             </Image>
-                            <ui:ProgressRing SnapsToDevicePixels="True"
+                            <!--<ui:ProgressRing SnapsToDevicePixels="True"
                                              VerticalAlignment="Center"
                                              HorizontalAlignment="Center"
                                              Width="15"
@@ -222,7 +220,7 @@
                                         </Style.Triggers>
                                     </Style>
                                 </ui:ProgressRing.Resources>
-                            </ui:ProgressRing>
+                            </ui:ProgressRing>-->
                         </Grid>
                         <StackPanel Orientation="Vertical"
                                     Margin="8 0 8 0">

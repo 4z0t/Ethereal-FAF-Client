@@ -1,6 +1,5 @@
 ﻿using beta.Infrastructure.Services;
 using beta.Properties;
-using ModernWpf;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -24,32 +23,32 @@ namespace beta.Views.Windows
 
         private void ToggleAppThemeHandler(object sender, RoutedEventArgs e)
         {
-            ClearValue(ThemeManager.RequestedThemeProperty);
+            //ClearValue(ThemeManager.RequestedThemeProperty);
 
-            Application.Current.Dispatcher.BeginInvoke(() =>
-            {
-                var tm = ThemeManager.Current;
-                if (tm.ActualApplicationTheme == ApplicationTheme.Dark)
-                {
-                    tm.ApplicationTheme = ApplicationTheme.Light;
-                }
-                else
-                {
-                    tm.ApplicationTheme = ApplicationTheme.Dark;
-                }
-            });
+            //Application.Current.Dispatcher.BeginInvoke(() =>
+            //{
+            //    var tm = ThemeManager.Current;
+            //    if (tm.ActualApplicationTheme == ApplicationTheme.Dark)
+            //    {
+            //        tm.ApplicationTheme = ApplicationTheme.Light;
+            //    }
+            //    else
+            //    {
+            //        tm.ApplicationTheme = ApplicationTheme.Dark;
+            //    }
+            //});
         }
 
         private void ToggleWindowThemeHandler(object sender, RoutedEventArgs e)
         {
-            if (ThemeManager.GetActualTheme(this) == ElementTheme.Light)
-            {
-                ThemeManager.SetRequestedTheme(this, ElementTheme.Dark);
-            }
-            else
-            {
-                ThemeManager.SetRequestedTheme(this, ElementTheme.Light);
-            }
+        //    if (ThemeManager.GetActualTheme(this) == ElementTheme.Light)
+        //    {
+        //        ThemeManager.SetRequestedTheme(this, ElementTheme.Dark);
+        //    }
+        //    else
+        //    {
+        //        ThemeManager.SetRequestedTheme(this, ElementTheme.Light);
+        //    }
         }
         private void OnSettingChange(object sender, System.ComponentModel.PropertyChangedEventArgs e) => ((Settings)sender).Save();
     }

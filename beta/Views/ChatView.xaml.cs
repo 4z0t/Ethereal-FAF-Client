@@ -1,7 +1,6 @@
 ﻿using beta.Infrastructure.Services.Interfaces;
-using System.Security.Cryptography;
-using System.Text;
 using System.Windows;
+using System;
 using System.Windows.Controls;
 using TechLifeForum;
 
@@ -41,13 +40,13 @@ namespace beta.Views
         {
             e.Message = e.Message.Replace('\n', ' ');
             e.From = e.From.Replace('\n', ' ');
-            AeolusControl.Items.Add(e.From + ": " + e.Message);
+            //AeolusControl.Items.Add(e.From + ": " + e.Message);
         }
 
         private void IrcClient_ServerMessage(object sender, StringEventArgs e)
         {
             e.Result = e.Result.Replace('\n', ' ');
-            ServerControl.Items.Add(e.Result);
+            //ServerControl.Items.Add(e.Result);
         }
 
         private bool s = false;
@@ -60,11 +59,11 @@ namespace beta.Views
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(TextBox.Text)) return;
-            string nick = Properties.Settings.Default.PlayerNick;
-            IrcClient.SendMessage("#aeolus", TextBox.Text);
-            AeolusControl.Items.Add(nick + ": " + TextBox.Text);
-            TextBox.Clear();
+            //if (string.IsNullOrWhiteSpace(TextBox.Text)) return;
+            //string nick = Properties.Settings.Default.PlayerNick;
+            //IrcClient.SendMessage("#aeolus", TextBox.Text);
+            //AeolusControl.Items.Add(nick + ": " + TextBox.Text);
+            //TextBox.Clear();
         }
 
         private void MenuItem_OnClick(object sender, RoutedEventArgs e)

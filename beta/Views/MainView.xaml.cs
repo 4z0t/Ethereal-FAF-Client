@@ -2,8 +2,6 @@
 using beta.Models;
 using beta.Models.Server;
 using beta.Views.Windows;
-using ModernWpf;
-using ModernWpf.Controls;
 using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
@@ -13,7 +11,6 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
-using System.Windows.Threading;
 using Button = System.Windows.Controls.Button;
 
 namespace beta.Views
@@ -35,7 +32,7 @@ namespace beta.Views
             InitializeComponent();
 
             var window = (MainWindow)Application.Current.MainWindow;
-            window.TitleProfileSpace.Visibility = Visibility.Visible;
+            //window.TitleProfileSpace.Visibility = Visibility.Visible;
 
             var lob = new LobbiesView();
             //MainFrame.Content = lob;
@@ -413,13 +410,13 @@ namespace beta.Views
 
         public async Task OnViewChanged(INavigationManager navigationManager) => NavigationManager = navigationManager;
 
-        private void OnUserSearchInputTextChange(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
-        {
-            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
-            {
-                sender.ItemsSource = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            }
-        }
+        //private void OnUserSearchInputTextChange(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        //{
+        //    if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+        //    {
+        //        sender.ItemsSource = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        //    }
+        //}
 
         Button lastBtn;
         private void ItemsControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -479,20 +476,20 @@ namespace beta.Views
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            ClearValue(ThemeManager.RequestedThemeProperty);
+            //ClearValue(ThemeManager.RequestedThemeProperty);
 
-            Application.Current.Dispatcher.BeginInvoke(() =>
-            {
-                var tm = ThemeManager.Current;
-                if (tm.ActualApplicationTheme == ApplicationTheme.Dark)
-                {
-                    tm.ApplicationTheme = ApplicationTheme.Light;
-                }
-                else
-                {
-                    tm.ApplicationTheme = ApplicationTheme.Dark;
-                }
-            });
+            //Application.Current.Dispatcher.BeginInvoke(() =>
+            //{
+            //    var tm = ThemeManager.Current;
+            //    if (tm.ActualApplicationTheme == ApplicationTheme.Dark)
+            //    {
+            //        tm.ApplicationTheme = ApplicationTheme.Light;
+            //    }
+            //    else
+            //    {
+            //        tm.ApplicationTheme = ApplicationTheme.Dark;
+            //    }
+            //});
         }
         private void MenuItem_OnClick(object sender, RoutedEventArgs e)
         {

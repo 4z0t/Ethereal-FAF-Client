@@ -1,7 +1,6 @@
 ﻿using beta.Infrastructure.Services.Interfaces;
 using beta.Properties;
 using Microsoft.Extensions.DependencyInjection;
-using ModernWpf.Controls;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,8 +32,6 @@ namespace beta.Views
                 // looping view controls and hide them
                 for (int i = 0; i < Canvas.Children.Count; i++)
                     Canvas.Children[i].Visibility = Visibility.Collapsed;
-                
-                ProgressRing.Visibility = Visibility.Visible;
 
                 // launch OAuth2 authorization in service
                 await OAuthService.Auth();
@@ -53,14 +50,14 @@ namespace beta.Views
 
             // raising up after finishing OAuth2 authorization
             OAuthService.Result += OnOAuthAuthorizationFinish;
-            
+
             // raising up after finishing lobby session authorization
             _LobbySessionService.Authorization += OnLobbySessionServiceAuthorizationFinish;
 
             // load user setting of auto join ot local checkbox
             AutoJoinCheckBox.IsChecked = Settings.Default.AutoJoin;
         }
-            
+
         private void OnLobbySessionServiceAuthorizationFinish(object sender, Infrastructure.EventArgs<bool> e) =>
             Dispatcher.Invoke(() =>
             {
@@ -88,17 +85,15 @@ namespace beta.Views
                 for (int i = 0; i < Canvas.Children.Count; i++)
                     Canvas.Children[i].Visibility = Visibility.Collapsed;
 
-                ProgressRing.Visibility = Visibility.Visible;
-
                 OAuthService.Auth(loginrOrEmail, password);
             });
         }
 
-        private readonly ContentDialog WarnDialog = new()
-        {
-            Title = "Warning",
-            CloseButtonText = "Ok"
-        };
+        //private readonly ContentDialog WarnDialog = new()
+        //{
+        //    Title = "Warning",
+        //    CloseButtonText = "Ok"
+        //};
 
         private void OnOAuthAuthorizationFinish(object sender, Infrastructure.EventArgs<OAuthStates> e)
         {
@@ -107,22 +102,22 @@ namespace beta.Views
                 case OAuthStates.AUTHORIZED:
                     for (int i = 0; i < Canvas.Children.Count; i++)
                         Canvas.Children[i].Visibility = Visibility.Collapsed;
-                    ProgressRing.Visibility = Visibility.Visible;
+                    ////ProgressRing.Visibility = Visibility.Visible;
                     return;
                 case OAuthStates.INVALID:
-                    WarnDialog.Content = "Invalid authorization parameters";
+                    //WarnDialog.Content = "Invalid authorization parameters";
                     break;
                 case OAuthStates.NO_CONNECTION:
-                    WarnDialog.Content = "No connection.\nPlease check your internet connection";
+                    //WarnDialog.Content = "No connection.\nPlease check your internet connection";
                     break;
                 case OAuthStates.NO_TOKEN:
-                    WarnDialog.Content = "Something went wrong on auto-join.\nPlease use authorization form again";
+                    //WarnDialog.Content = "Something went wrong on auto-join.\nPlease use authorization form again";
                     break;
                 case OAuthStates.TIMED_OUT:
-                    WarnDialog.Content = "Server is not responses";
+                    //WarnDialog.Content = "Server is not responses";
                     break;
                 case OAuthStates.EMPTY_FIELDS:
-                    WarnDialog.Content = "Empty fields";
+                    //WarnDialog.Content = "Empty fields";
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -131,9 +126,9 @@ namespace beta.Views
             for (int i = 0; i < Canvas.Children.Count; i++)
                 Canvas.Children[i].Visibility = Visibility.Visible;
 
-            ProgressRing.Visibility = Visibility.Collapsed;
+            //ProgressRing.Visibility = Visibility.Collapsed;
 
-            WarnDialog.ShowAsync();
+            //WarnDialog.ShowAsync();
         }
     }
 }

@@ -3,23 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:ui="http://schemas.modernwpf.com/2019"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Canvas x:Name="Canvas"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
-        <!--#region Authorization progress ring--> 
-        <ui:ProgressRing Name="ProgressRing"
+        <!--#region Authorization progress ring-->
+        <!--<ui:ProgressRing Name="ProgressRing"
                          Visibility="Collapsed"
                          Height="100"
                          Width="100"
                          IsActive="True"
                          Canvas.Top="-50"
-                         Canvas.Left="-50"/>
+                         Canvas.Left="-50"/>-->
         <!--#endregion-->
 
-        <!--#region FAF splash logo--> 
+        <!--#region FAF splash logo-->
         <Path Fill="{DynamicResource SystemControlBackgroundBaseMediumHighBrush}"
               Stretch="Uniform"
               Width="140"
@@ -33,7 +32,6 @@
         <!--#region Username or E-Mail input -->
         <TextBox Name="LoginInput"
                  Width="160"
-                 ui:ControlHelper.PlaceholderText="Username or e-mail"
                  Canvas.Top="-30"
                  Canvas.Left="-80">
             <TextBox.ToolTip>
@@ -46,7 +44,6 @@
         <!--#region Password input -->
         <PasswordBox Name="PasswordInput"
                      Width="160"
-                     ui:ControlHelper.PlaceholderText="Password"
 
                      Canvas.Top="24"
                      Canvas.Left="-80"/>
@@ -60,8 +57,7 @@
                 Canvas.Top="76"
                 Canvas.Left="-50">
             <Button.Content>
-                <Glyphs UnicodeString="Log in"
-                        Fill="{DynamicResource SystemControlForegroundBaseHighBrush}"/>
+                <Glyphs UnicodeString="Log in"/>
             </Button.Content>
         </Button>
         <!--#endregion-->
@@ -81,8 +77,7 @@
                   Canvas.Top="140"
                   Canvas.Left="-80">
             <CheckBox.Content>
-                <Glyphs UnicodeString="Auto join"
-                        Fill="{DynamicResource SystemControlForegroundBaseHighBrush}"/>
+                <Glyphs UnicodeString="Auto join"/>
             </CheckBox.Content>
         </CheckBox>
         <!--#endregion-->

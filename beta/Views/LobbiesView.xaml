@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:beta.Views"
              xmlns:models="clr-namespace:beta.Models.Server"
-             xmlns:ui="http://schemas.modernwpf.com/2019"
              xmlns:converters="clr-namespace:beta.Infrastructure.Converters"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:controls="clr-namespace:beta.Resources.Controls"
@@ -201,14 +200,14 @@
                         <Grid Margin="12 0">
                             <StackPanel Orientation="Horizontal">
                                 <StackPanel.Resources>
-                                    <Style TargetType="ui:ToggleSwitch">
+                                    <!--<Style TargetType="ui:ToggleSwitch">
                                         <Style.Triggers>
                                             <Trigger Property="IsOn" Value="False">
                                                 <Setter Property="BorderBrush" Value="#9a9a9a"/>
                                                 <Setter Property="TextElement.Foreground" Value="#9a9a9a"/>
                                             </Trigger>
                                         </Style.Triggers>
-                                    </Style>
+                                    </Style>-->
                                     <Style TargetType="Separator">
                                         <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundBaseMediumHighBrush}"/>
                                         <Setter Property="Margin" Value="30 0"/>
@@ -221,23 +220,22 @@
                                     </Style>
                                 </StackPanel.Resources>
                                 <StackPanel>
-                                    <ui:ToggleSwitch Name="ToggleGameModeFilter" 
+                                    <!--<ui:ToggleSwitch Name="ToggleGameModeFilter" 
                                                      Margin="0 0 -30 0"
                                                      Header="Filter game modes"
-                                                     IsOn="{Binding IsGameModeFilterEnabled}"/>
+                                                     IsOn="{Binding IsGameModeFilterEnabled}"/>-->
                                 </StackPanel>   
                                 <Separator/>
-                                <ui:ToggleSwitch Header="Hide private games"
+                                <!--<ui:ToggleSwitch Header="Hide private games"
                                                  IsOn="{Binding IsPrivateGamesHidden}"
                                                  VerticalAlignment="Top"
                                                  Padding="0"
-                                                 Margin="0 0 -40 0"/>
+                                                 Margin="0 0 -40 0"/>-->
                                 <Separator/>
                             </StackPanel>
                             <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
                                      VerticalAlignment="Center"
                                      Margin="0 0 34 0"
-                                     ui:ControlHelper.PlaceholderText="Search lobby"
                                      Width="200"
                                      Name="SearchBox"/>
                             <StackPanel HorizontalAlignment="Right"
@@ -367,7 +365,7 @@
 
                                 <ItemContainerTemplate x:Key="ItemContainerTemplate">
                                     <StackPanel Style="{StaticResource Style}">
-                                        <ui:ListViewHeaderItem IsTabStop="False">
+                                        <!--<ui:ListViewHeaderItem IsTabStop="Falsemain">-->
                                             <StackPanel Orientation="Horizontal">
                                                 <Button Name="Header"
                                                         Padding="14 4"
@@ -379,7 +377,7 @@
                                                            VerticalAlignment="Center"
                                                            Margin="10 0 0 0"/>
                                             </StackPanel>
-                                        </ui:ListViewHeaderItem>
+                                        <!--</ui:ListViewHeaderItem>-->
                                         <!--<TextBlock  Text="{Binding Items.Count}"/>
                                         <ListBox ItemsSource="{Binding Items, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}">
                                             <ListBox.Resources>
@@ -393,14 +391,16 @@
                                                 </Style>
                                             </ListBox.Resources>
                                         </ListBox>-->
-                                        <ui:ItemsRepeater ItemsSource="{Binding Items}"
+                                        <ItemsControl ItemsSource="{Binding Items}"
                                                           ItemTemplate="{StaticResource LobbyContainerDefaultTemplate}"
                                                           Margin="0 4"
                                                           HorizontalAlignment="Center">
-                                            <ui:ItemsRepeater.Layout>
-                                                <ui:UniformGridLayout ItemsJustification="Start"/>
-                                            </ui:ItemsRepeater.Layout>
-                                        </ui:ItemsRepeater>
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <WrapPanel Orientation="Horizontal"/>
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                        </ItemsControl>
                                     </StackPanel>
                                 </ItemContainerTemplate>
 
